@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+<body>
+    <div>
+        <h1>Welcome, {{ firstname }} {{ lastname }}!</h1>
+        <p>Email: {{ email }}</p>
+        <h3>Word Frequencies in Limerick.txt:</h3>
+        {% if word_count != "File not found" %}
+            <ul>
+            {% for word, count in word_count.items() %}
+                <li>{{ word }}: {{ count }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>{{ word_count }}</p>
+        {% endif %}
+        <a href="{{url_for('download')}}" download>Download Limerick.txt</a>
+    </div>
+</body>
+</html>
