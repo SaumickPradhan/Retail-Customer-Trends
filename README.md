@@ -4,7 +4,7 @@ Created by Saumick Pradhan, Carson McCarthy, and Emma Gardner, this web applicat
 ## Availability and Use
 This application is running at http://20.121.58.13. First, you must log in or create an account. Then, you will be taken to a menu page. You can press one of the buttons (search for data, upload data, or view the dashboard), or log out.
 
-**NOTE:** We are aware of an issue occurring on the SQL server. It is unclear why, but the connection is sometimes refused after it hasn't received any queries for a while. If you receive an error, please reload the page, and it should be resolved. We apologize for any inconvenience! We have made numerous attempts to resolve/handle this issue, so we hope it won't be a problem but wanted to provide a warning just in case.
+**NOTE:** We are aware of an issue occurring on the SQL server. It is unclear why, but the connection is sometimes refused after it hasn't received any queries for a while. If you receive an error (on the search or upload page), please reload the page, and it should be resolved. We apologize for any inconvenience! We have made numerous attempts to resolve/handle this issue, so we hope it won't be a problem but wanted to provide a warning just in case.
 
 ### Dashboard
 This page contains visualizations of the retail data, which were created using Databricks. The notebook is the DashboardTemp.ipynb file within this repository.
