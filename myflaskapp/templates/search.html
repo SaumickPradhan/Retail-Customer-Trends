@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        th, td {
+          text-align: left;
+          padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p style="margin-bottom: 20px">Return to the <a href="{{ url_for('menu') }}">main menu</a>.</p>
+    <h2>Search for Data</h2>
+    <form method="post" action="/search">
+        <label for="hshd_num_input">Household number:</label>
+        <input type="number" min="0" id="hshd_num_input" name="hshd_num_input" required>
+        <input type="submit" value="Search" />
+    </form>
+    {% if not error %}
+    <div id="results" style="margin-top: 10px">
+        <table>
+            <tr>
+                <th>Household Number</th>
+                <th>Basket Number</th>
+                <th>Date</th>
+                <th>Product Number</th>
+                <th>Department</th>
+                <th>Commodity</th>
+                <th>Spend</th>
+                <th>Units</th>
+                <th>Store Region</th>
+                <th>Week Number</th>
+                <th>Year</th>
+                <th>Loyalty Flag</th>
+                <th>Age Range</th>
+                <th>Marital Status</th>
+                <th>Income Range</th>
+                <th>Homeowner Description</th>
+                <th>Household Composition</th>
+                <th>Household Size</th>
+                <th>Children</th>
+            </tr>
+    {% endif %}
+            {{ table_content | safe }}
+    {% if not error %}
+        </table>
+    </div>
+    {% endif %}
+</body>
+</html>
