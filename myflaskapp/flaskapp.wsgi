@@ -1,4 +1,4 @@
 import sys
-sys.path.insert(0, '/home/ubuntu/myflaskapp')
+sys.path.insert(0, '/var/www/html/flaskapp')
 
 from app import app as application
