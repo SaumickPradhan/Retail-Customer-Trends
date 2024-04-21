@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome, {{ session.firstname }} {{ session.lastname }}!</h1>
+        <p>Your email is {{ session.email }}, and your username is {{ session.username }}.</p>
+        <p>Please select an option to continue.</p>
+        <a href="{{ url_for('dashboard') }}"><button>View the Dashboard</button></a>
+        <a href="{{ url_for('search') }}"><button>Search for Data</button></a>
+        <a href="{{ url_for('upload') }}"><button>Upload Data</button></a>
+    </div>
+    <div>
+        <p>Or, <a href="{{ url_for('logout') }}">log out</a> to create or sign in from another account.</p>
+    </div>
+</body>
+</html>
