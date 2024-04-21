@@ -83,7 +83,7 @@ def get_search_data(query, attempt=1):
         # Return the result of the query as a list of rows
         return rows
     except:
-        if attempt <= 3: query_customer_trends(query, attempt+1)
+        if attempt <= 2: query_customer_trends(query, attempt+1)
         else: return "error"
 
 # routes
@@ -155,7 +155,7 @@ def generate_table(hshd_num):
     FROM ((transactions JOIN households ON transactions.HSHD_NUM = households.HSHD_NUM) JOIN products ON transactions.PRODUCT_NUM = products.PRODUCT_NUM)
     WHERE transactions.HSHD_NUM = {str(hshd_num)} ORDER BY transactions.HSHD_NUM, BASKET_NUM, PURCHASE_DATE, products.PRODUCT_NUM, DEPARTMENT, COMMODITY"""
     query_res = get_search_data(query_string)
-    if query_res == "error": return query_res
+    if query_res == "error" or type(query_res) != list: return "error"
     table_content = ""
     for row in query_res:
       table_content += "<tr>"
@@ -167,7 +167,7 @@ def generate_table(hshd_num):
 @app.route('/search', methods=["GET","POST"])
 def search():
     if not session or not session['username'] or not session['firstname'] or not session['lastname'] or not session['email']: return redirect(url_for('home'))
-    error_string = "<p style='color: red'>Something went wrong. Please refresh the page and try again.</p>"
+    error_string = "<p style='color: red'>Unable to connect to the database. Please refresh the page and try again.</p>"
     if request.method == "GET":
       table_content = generate_table(10)
       if table_content == "error": return render_template('search.html', table_content=error_string, error=True)
