@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+</head>
+<body>
+    <h2>Upload Data</h2>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <label for="data_type">What type of data will you be uploading in a CSV file?</label>
+        <br>
+        <select style="margin-bottom: 10px" id="data_type" name="data_type">
+            <option value="0" selected>Transactions</option>
+            <option value="1">Households</option>
+            <option value="2">Products</option>
+        </select>
+        <br>
+        <label for="file_upload">Select a file:</label>
+        <br>
+        <input type="file" id="file_upload" name="file_upload" accept=".csv" required />
+        <br>
+        <input style="margin-top: 15px" type="submit" value="Upload" />
+    </form>
+    {% if success == "true" %}
+        <div>
+                Successfully uploaded file
+        </div>
+    {% endif %}
+    {% if success == "false" %}
+        <div>
+                There was a problem uploading your file
+        </div>
+    {% endif %}
+    <p style="margin-top: 50px">Return to the <a href="{{ url_for('menu') }}">main menu</a>.</p>
+</body>
+</html>
